@@ -33,7 +33,7 @@ const (
 
 // +kubebuilder:object:root=true
 // +kubebuilder:resource:path=secretsources,singular=secretsource,scope=Cluster,shortName=scsource,categories={meta,virtual-secrets,appscode}
-// +kubebuilder:printcolumn:name="SecretManagerType",type="string",JSONPath=".spec.secretManager"
+// +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
 type SecretSource struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
