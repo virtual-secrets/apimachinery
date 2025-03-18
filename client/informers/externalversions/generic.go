@@ -57,8 +57,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 	// Group=config.virtual-secrets.dev, Version=v1alpha1
 	case v1alpha1.SchemeGroupVersion.WithResource("secretmetadatas"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().SecretMetadatas().Informer()}, nil
-	case v1alpha1.SchemeGroupVersion.WithResource("secretsources"):
-		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().SecretSources().Informer()}, nil
+	case v1alpha1.SchemeGroupVersion.WithResource("secretstores"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Config().V1alpha1().SecretStores().Informer()}, nil
 
 		// Group=virtual-secrets.dev, Version=v1alpha1
 	case virtualv1alpha1.SchemeGroupVersion.WithResource("secrets"):

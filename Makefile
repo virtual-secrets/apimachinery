@@ -175,7 +175,7 @@ gen-crds:
 			output:crd:artifacts:config=crds
 
 crd_to_patch := config.virtual-secrets.dev_secretmetadatas.yaml \
-								config.virtual-secrets.dev_secretsources.yaml \
+								config.virtual-secrets.dev_secretstores.yaml \
 								virtual-secrets.dev_secrets.yaml
 
 .PHONY: patch-crds

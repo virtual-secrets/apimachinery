@@ -21,9 +21,9 @@ import (
 )
 
 const (
-	ResourceKindSecretSource = "SecretSource"
-	ResourceSecretSource     = "secretsource"
-	ResourceSecretSources    = "secretsources"
+	ResourceKindSecretStore = "SecretStore"
+	ResourceSecretStore     = "secretstore"
+	ResourceSecretStores    = "secretstores"
 )
 
 // +genclient
@@ -32,27 +32,27 @@ const (
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
 // +kubebuilder:object:root=true
-// +kubebuilder:resource:path=secretsources,singular=secretsource,scope=Cluster,shortName=scsource,categories={meta,virtual-secrets,appscode}
+// +kubebuilder:resource:path=secretstores,singular=secretstore,scope=Cluster,shortName=scsource,categories={meta,virtual-secrets,appscode}
 // +kubebuilder:printcolumn:name="Age",type="date",JSONPath=".metadata.creationTimestamp"
-type SecretSource struct {
+type SecretStore struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 
-	Spec SecretSourceSpec `json:"spec,omitempty"`
+	Spec SecretStoreSpec `json:"spec,omitempty"`
 }
 
-// SecretSourceSpec defines the desired state of SecretSource
-type SecretSourceSpec struct {
+// SecretStoreSpec defines the desired state of SecretStore
+type SecretStoreSpec struct {
 	Vault *Vault `json:"vault,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
 
-// SecretSourceList contains a list of SecretSource
-type SecretSourceList struct {
+// SecretStoreList contains a list of SecretStore
+type SecretStoreList struct {
 	metav1.TypeMeta `json:",inline"`
 	metav1.ListMeta `json:"metadata,omitempty"`
-	Items           []SecretSource `json:"items"`
+	Items           []SecretStore `json:"items"`
 }
 
 type Vault struct {
@@ -65,6 +65,6 @@ type Vault struct {
 }
 
 func init() {
-	SchemeBuilder.Register(&SecretSource{})
-	SchemeBuilder.Register(&SecretSourceList{})
+	SchemeBuilder.Register(&SecretStore{})
+	SchemeBuilder.Register(&SecretStoreList{})
 }

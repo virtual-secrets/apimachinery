@@ -39,9 +39,9 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadata":                    schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataList":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataList(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataSpec":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref),
-		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSource":                      schema_apimachinery_apis_config_v1alpha1_SecretSource(ref),
-		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSourceList":                  schema_apimachinery_apis_config_v1alpha1_SecretSourceList(ref),
-		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSourceSpec":                  schema_apimachinery_apis_config_v1alpha1_SecretSourceSpec(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStore":                       schema_apimachinery_apis_config_v1alpha1_SecretStore(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStoreList":                   schema_apimachinery_apis_config_v1alpha1_SecretStoreList(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStoreSpec":                   schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault":                             schema_apimachinery_apis_config_v1alpha1_Vault(ref),
 		"k8s.io/api/apps/v1.ControllerRevision":                                                      schema_k8sio_api_apps_v1_ControllerRevision(ref),
 		"k8s.io/api/apps/v1.ControllerRevisionList":                                                  schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
@@ -543,9 +543,9 @@ func schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref common.Refe
 				Description: "SecretMetadataSpec defines the desired state of SecretMetadata",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
-					"secretSourceName": {
+					"secretStoreName": {
 						SchemaProps: spec.SchemaProps{
-							Description: "Name of the SecretSourceName object",
+							Description: "Name of the SecretStoreName object",
 							Default:     "",
 							Type:        []string{"string"},
 							Format:      "",
@@ -566,13 +566,13 @@ func schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref common.Refe
 						},
 					},
 				},
-				Required: []string{"secretSourceName"},
+				Required: []string{"secretStoreName"},
 			},
 		},
 	}
 }
 
-func schema_apimachinery_apis_config_v1alpha1_SecretSource(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_apimachinery_apis_config_v1alpha1_SecretStore(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
@@ -601,22 +601,22 @@ func schema_apimachinery_apis_config_v1alpha1_SecretSource(ref common.ReferenceC
 					"spec": {
 						SchemaProps: spec.SchemaProps{
 							Default: map[string]interface{}{},
-							Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSourceSpec"),
+							Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStoreSpec"),
 						},
 					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSourceSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStoreSpec", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
 	}
 }
 
-func schema_apimachinery_apis_config_v1alpha1_SecretSourceList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_apimachinery_apis_config_v1alpha1_SecretStoreList(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SecretSourceList contains a list of SecretSource",
+				Description: "SecretStoreList contains a list of SecretStore",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"kind": {
@@ -646,7 +646,7 @@ func schema_apimachinery_apis_config_v1alpha1_SecretSourceList(ref common.Refere
 								Schema: &spec.Schema{
 									SchemaProps: spec.SchemaProps{
 										Default: map[string]interface{}{},
-										Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSource"),
+										Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStore"),
 									},
 								},
 							},
@@ -657,15 +657,15 @@ func schema_apimachinery_apis_config_v1alpha1_SecretSourceList(ref common.Refere
 			},
 		},
 		Dependencies: []string{
-			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretSource", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretStore", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
 	}
 }
 
-func schema_apimachinery_apis_config_v1alpha1_SecretSourceSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+func schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
 			SchemaProps: spec.SchemaProps{
-				Description: "SecretSourceSpec defines the desired state of SecretSource",
+				Description: "SecretStoreSpec defines the desired state of SecretStore",
 				Type:        []string{"object"},
 				Properties: map[string]spec.Schema{
 					"vault": {

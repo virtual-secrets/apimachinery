@@ -645,9 +645,9 @@
         }
       ]
     },
-    "/apis/config.virtual-secrets.dev/v1alpha1/secretsources": {
+    "/apis/config.virtual-secrets.dev/v1alpha1/secretstores": {
       "get": {
-        "description": "list or watch objects of kind SecretSource",
+        "description": "list or watch objects of kind SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -664,7 +664,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "listConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "listConfigVirtualSecretsDevV1alpha1SecretStore",
         "parameters": [
           {
             "$ref": "#/parameters/allowWatchBookmarks-HC2hJt-J"
@@ -701,7 +701,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSourceList"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStoreList"
             }
           }
         },
@@ -709,11 +709,11 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "post": {
-        "description": "create a SecretSource",
+        "description": "create a SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -728,14 +728,14 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "createConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "createConfigVirtualSecretsDevV1alpha1SecretStore",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           {
@@ -760,19 +760,19 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           "202": {
             "description": "Accepted",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           }
         },
@@ -780,11 +780,11 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "delete": {
-        "description": "delete collection of SecretSource",
+        "description": "delete collection of SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -799,7 +799,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "deleteConfigVirtualSecretsDevV1alpha1CollectionSecretSource",
+        "operationId": "deleteConfigVirtualSecretsDevV1alpha1CollectionSecretStore",
         "parameters": [
           {
             "$ref": "#/parameters/body-2Y1dVQaQ"
@@ -860,7 +860,7 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "parameters": [
@@ -869,9 +869,9 @@
         }
       ]
     },
-    "/apis/config.virtual-secrets.dev/v1alpha1/secretsources/{name}": {
+    "/apis/config.virtual-secrets.dev/v1alpha1/secretstores/{name}": {
       "get": {
-        "description": "read the specified SecretSource",
+        "description": "read the specified SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -886,12 +886,12 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "readConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "readConfigVirtualSecretsDevV1alpha1SecretStore",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           }
         },
@@ -899,11 +899,11 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "put": {
-        "description": "replace the specified SecretSource",
+        "description": "replace the specified SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -918,14 +918,14 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "replaceConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "replaceConfigVirtualSecretsDevV1alpha1SecretStore",
         "parameters": [
           {
             "name": "body",
             "in": "body",
             "required": true,
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           {
@@ -950,13 +950,13 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           }
         },
@@ -964,11 +964,11 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "delete": {
-        "description": "delete a SecretSource",
+        "description": "delete a SecretStore",
         "consumes": [
           "*/*"
         ],
@@ -983,7 +983,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "deleteConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "deleteConfigVirtualSecretsDevV1alpha1SecretStore",
         "parameters": [
           {
             "$ref": "#/parameters/body-2Y1dVQaQ"
@@ -1026,11 +1026,11 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "patch": {
-        "description": "partially update the specified SecretSource",
+        "description": "partially update the specified SecretStore",
         "consumes": [
           "application/json-patch+json",
           "application/merge-patch+json",
@@ -1048,7 +1048,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "patchConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "patchConfigVirtualSecretsDevV1alpha1SecretStore",
         "parameters": [
           {
             "$ref": "#/parameters/body-78PwaGsr"
@@ -1078,13 +1078,13 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+              "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
             }
           }
         },
@@ -1092,14 +1092,14 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "parameters": [
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "name of the SecretSource",
+          "description": "name of the SecretStore",
           "name": "name",
           "in": "path",
           "required": true
@@ -1336,9 +1336,9 @@
         }
       ]
     },
-    "/apis/config.virtual-secrets.dev/v1alpha1/watch/secretsources": {
+    "/apis/config.virtual-secrets.dev/v1alpha1/watch/secretstores": {
       "get": {
-        "description": "watch individual changes to a list of SecretSource. deprecated: use the 'watch' parameter with a list operation instead.",
+        "description": "watch individual changes to a list of SecretStore. deprecated: use the 'watch' parameter with a list operation instead.",
         "consumes": [
           "*/*"
         ],
@@ -1355,7 +1355,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "watchConfigVirtualSecretsDevV1alpha1SecretSourceList",
+        "operationId": "watchConfigVirtualSecretsDevV1alpha1SecretStoreList",
         "responses": {
           "200": {
             "description": "OK",
@@ -1368,7 +1368,7 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "parameters": [
@@ -1407,9 +1407,9 @@
         }
       ]
     },
-    "/apis/config.virtual-secrets.dev/v1alpha1/watch/secretsources/{name}": {
+    "/apis/config.virtual-secrets.dev/v1alpha1/watch/secretstores/{name}": {
       "get": {
-        "description": "watch changes to an object of kind SecretSource. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
+        "description": "watch changes to an object of kind SecretStore. deprecated: use the 'watch' parameter with a list operation instead, filtered to a single item with the 'fieldSelector' parameter.",
         "consumes": [
           "*/*"
         ],
@@ -1426,7 +1426,7 @@
         "tags": [
           "configVirtualSecretsDev_v1alpha1"
         ],
-        "operationId": "watchConfigVirtualSecretsDevV1alpha1SecretSource",
+        "operationId": "watchConfigVirtualSecretsDevV1alpha1SecretStore",
         "responses": {
           "200": {
             "description": "OK",
@@ -1439,7 +1439,7 @@
         "x-kubernetes-group-version-kind": {
           "group": "config.virtual-secrets.dev",
           "version": "v1alpha1",
-          "kind": "SecretSource"
+          "kind": "SecretStore"
         }
       },
       "parameters": [
@@ -1461,7 +1461,7 @@
         {
           "uniqueItems": true,
           "type": "string",
-          "description": "name of the SecretSource",
+          "description": "name of the SecretStore",
           "name": "name",
           "in": "path",
           "required": true
@@ -2409,15 +2409,15 @@
       "description": "SecretMetadataSpec defines the desired state of SecretMetadata",
       "type": "object",
       "required": [
-        "secretSourceName"
+        "secretStoreName"
       ],
       "properties": {
         "immutable": {
           "description": "Immutable, if set to true, ensures that data stored in the Secret cannot be updated (only object metadata can be modified). If not set to true, the field can be modified at any time. Defaulted to nil.",
           "type": "boolean"
         },
-        "secretSourceName": {
-          "description": "Name of the SecretSourceName object",
+        "secretStoreName": {
+          "description": "Name of the SecretStoreName object",
           "type": "string",
           "default": ""
         },
@@ -2427,7 +2427,7 @@
         }
       }
     },
-    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource": {
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore": {
       "type": "object",
       "properties": {
         "apiVersion": {
@@ -2444,19 +2444,19 @@
         },
         "spec": {
           "default": {},
-          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSourceSpec"
+          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStoreSpec"
         }
       },
       "x-kubernetes-group-version-kind": [
         {
           "group": "config.virtual-secrets.dev",
-          "kind": "SecretSource",
+          "kind": "SecretStore",
           "version": "v1alpha1"
         }
       ]
     },
-    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSourceList": {
-      "description": "SecretSourceList contains a list of SecretSource",
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStoreList": {
+      "description": "SecretStoreList contains a list of SecretStore",
       "type": "object",
       "required": [
         "items"
@@ -2470,7 +2470,7 @@
           "type": "array",
           "items": {
             "default": {},
-            "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSource"
+            "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStore"
           }
         },
         "kind": {
@@ -2485,13 +2485,13 @@
       "x-kubernetes-group-version-kind": [
         {
           "group": "config.virtual-secrets.dev",
-          "kind": "SecretSourceList",
+          "kind": "SecretStoreList",
           "version": "v1alpha1"
         }
       ]
     },
-    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretSourceSpec": {
-      "description": "SecretSourceSpec defines the desired state of SecretSource",
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretStoreSpec": {
+      "description": "SecretStoreSpec defines the desired state of SecretStore",
       "type": "object",
       "properties": {
         "vault": {
@@ -2520,7 +2520,7 @@
       "description": "Secret holds secret data of a certain type. The total bytes of the values in the Data field must be less than MaxSecretSize bytes.",
       "type": "object",
       "required": [
-        "secretSourceName"
+        "secretStoreName"
       ],
       "properties": {
         "apiVersion": {
@@ -2548,8 +2548,8 @@
           "default": {},
           "$ref": "#/definitions/io.k8s.apimachinery.pkg.apis.meta.v1.ObjectMeta"
         },
-        "secretSourceName": {
-          "description": "Name of the SecretSourceName object",
+        "secretStoreName": {
+          "description": "Name of the SecretStoreName object",
           "type": "string",
           "default": ""
         },

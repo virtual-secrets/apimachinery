@@ -30,7 +30,7 @@ import (
 type ConfigV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	SecretMetadatasGetter
-	SecretSourcesGetter
+	SecretStoresGetter
 }
 
 // ConfigV1alpha1Client is used to interact with features provided by the config.virtual-secrets.dev group.
@@ -42,8 +42,8 @@ func (c *ConfigV1alpha1Client) SecretMetadatas(namespace string) SecretMetadataI
 	return newSecretMetadatas(c, namespace)
 }
 
-func (c *ConfigV1alpha1Client) SecretSources() SecretSourceInterface {
-	return newSecretSources(c)
+func (c *ConfigV1alpha1Client) SecretStores() SecretStoreInterface {
+	return newSecretStores(c)
 }
 
 // NewForConfig creates a new ConfigV1alpha1Client for the given config.

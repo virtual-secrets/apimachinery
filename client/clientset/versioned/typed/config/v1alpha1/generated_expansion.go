@@ -20,4 +20,4 @@ package v1alpha1
 
 type SecretMetadataExpansion interface{}
 
-type SecretSourceExpansion interface{}
+type SecretStoreExpansion interface{}

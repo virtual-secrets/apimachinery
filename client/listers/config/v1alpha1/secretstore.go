@@ -26,44 +26,44 @@ import (
 	"k8s.io/client-go/tools/cache"
 )
 
-// SecretSourceLister helps list SecretSources.
+// SecretStoreLister helps list SecretStores.
 // All objects returned here must be treated as read-only.
-type SecretSourceLister interface {
-	// List lists all SecretSources in the indexer.
+type SecretStoreLister interface {
+	// List lists all SecretStores in the indexer.
 	// Objects returned here must be treated as read-only.
-	List(selector labels.Selector) (ret []*v1alpha1.SecretSource, err error)
-	// Get retrieves the SecretSource from the index for a given name.
+	List(selector labels.Selector) (ret []*v1alpha1.SecretStore, err error)
+	// Get retrieves the SecretStore from the index for a given name.
 	// Objects returned here must be treated as read-only.
-	Get(name string) (*v1alpha1.SecretSource, error)
-	SecretSourceListerExpansion
+	Get(name string) (*v1alpha1.SecretStore, error)
+	SecretStoreListerExpansion
 }
 
-// secretSourceLister implements the SecretSourceLister interface.
-type secretSourceLister struct {
+// secretStoreLister implements the SecretStoreLister interface.
+type secretStoreLister struct {
 	indexer cache.Indexer
 }
 
-// NewSecretSourceLister returns a new SecretSourceLister.
-func NewSecretSourceLister(indexer cache.Indexer) SecretSourceLister {
-	return &secretSourceLister{indexer: indexer}
+// NewSecretStoreLister returns a new SecretStoreLister.
+func NewSecretStoreLister(indexer cache.Indexer) SecretStoreLister {
+	return &secretStoreLister{indexer: indexer}
 }
 
-// List lists all SecretSources in the indexer.
-func (s *secretSourceLister) List(selector labels.Selector) (ret []*v1alpha1.SecretSource, err error) {
+// List lists all SecretStores in the indexer.
+func (s *secretStoreLister) List(selector labels.Selector) (ret []*v1alpha1.SecretStore, err error) {
 	err = cache.ListAll(s.indexer, selector, func(m interface{}) {
-		ret = append(ret, m.(*v1alpha1.SecretSource))
+		ret = append(ret, m.(*v1alpha1.SecretStore))
 	})
 	return ret, err
 }
 
-// Get retrieves the SecretSource from the index for a given name.
-func (s *secretSourceLister) Get(name string) (*v1alpha1.SecretSource, error) {
+// Get retrieves the SecretStore from the index for a given name.
+func (s *secretStoreLister) Get(name string) (*v1alpha1.SecretStore, error) {
 	obj, exists, err := s.indexer.GetByKey(name)
 	if err != nil {
 		return nil, err
 	}
 	if !exists {
-		return nil, errors.NewNotFound(v1alpha1.Resource("secretsource"), name)
+		return nil, errors.NewNotFound(v1alpha1.Resource("secretstore"), name)
 	}
-	return obj.(*v1alpha1.SecretSource), nil
+	return obj.(*v1alpha1.SecretStore), nil
 }

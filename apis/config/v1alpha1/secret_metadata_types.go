@@ -44,8 +44,8 @@ type SecretMetadata struct {
 
 // SecretMetadataSpec defines the desired state of SecretMetadata
 type SecretMetadataSpec struct {
-	// Name of the SecretSourceName object
-	SecretSourceName string `json:"secretSourceName"`
+	// Name of the SecretStoreName object
+	SecretStoreName string `json:"secretStoreName"`
 
 	// Used to facilitate programmatic handling of secret data.
 	// More meta: https://kubernetes.io/docs/concepts/configuration/secret/#secret-types

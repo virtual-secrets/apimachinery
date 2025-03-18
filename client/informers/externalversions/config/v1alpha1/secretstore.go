@@ -33,58 +33,58 @@ import (
 	cache "k8s.io/client-go/tools/cache"
 )
 
-// SecretSourceInformer provides access to a shared informer and lister for
-// SecretSources.
-type SecretSourceInformer interface {
+// SecretStoreInformer provides access to a shared informer and lister for
+// SecretStores.
+type SecretStoreInformer interface {
 	Informer() cache.SharedIndexInformer
-	Lister() v1alpha1.SecretSourceLister
+	Lister() v1alpha1.SecretStoreLister
 }
 
-type secretSourceInformer struct {
+type secretStoreInformer struct {
 	factory          internalinterfaces.SharedInformerFactory
 	tweakListOptions internalinterfaces.TweakListOptionsFunc
 }
 
-// NewSecretSourceInformer constructs a new informer for SecretSource type.
+// NewSecretStoreInformer constructs a new informer for SecretStore type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewSecretSourceInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
-	return NewFilteredSecretSourceInformer(client, resyncPeriod, indexers, nil)
+func NewSecretStoreInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers) cache.SharedIndexInformer {
+	return NewFilteredSecretStoreInformer(client, resyncPeriod, indexers, nil)
 }
 
-// NewFilteredSecretSourceInformer constructs a new informer for SecretSource type.
+// NewFilteredSecretStoreInformer constructs a new informer for SecretStore type.
 // Always prefer using an informer factory to get a shared informer instead of getting an independent
 // one. This reduces memory footprint and number of connections to the server.
-func NewFilteredSecretSourceInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
+func NewFilteredSecretStoreInformer(client versioned.Interface, resyncPeriod time.Duration, indexers cache.Indexers, tweakListOptions internalinterfaces.TweakListOptionsFunc) cache.SharedIndexInformer {
 	return cache.NewSharedIndexInformer(
 		&cache.ListWatch{
 			ListFunc: func(options v1.ListOptions) (runtime.Object, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ConfigV1alpha1().SecretSources().List(context.TODO(), options)
+				return client.ConfigV1alpha1().SecretStores().List(context.TODO(), options)
 			},
 			WatchFunc: func(options v1.ListOptions) (watch.Interface, error) {
 				if tweakListOptions != nil {
 					tweakListOptions(&options)
 				}
-				return client.ConfigV1alpha1().SecretSources().Watch(context.TODO(), options)
+				return client.ConfigV1alpha1().SecretStores().Watch(context.TODO(), options)
 			},
 		},
-		&configv1alpha1.SecretSource{},
+		&configv1alpha1.SecretStore{},
 		resyncPeriod,
 		indexers,
 	)
 }
 
-func (f *secretSourceInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
-	return NewFilteredSecretSourceInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
+func (f *secretStoreInformer) defaultInformer(client versioned.Interface, resyncPeriod time.Duration) cache.SharedIndexInformer {
+	return NewFilteredSecretStoreInformer(client, resyncPeriod, cache.Indexers{cache.NamespaceIndex: cache.MetaNamespaceIndexFunc}, f.tweakListOptions)
 }
 
-func (f *secretSourceInformer) Informer() cache.SharedIndexInformer {
-	return f.factory.InformerFor(&configv1alpha1.SecretSource{}, f.defaultInformer)
+func (f *secretStoreInformer) Informer() cache.SharedIndexInformer {
+	return f.factory.InformerFor(&configv1alpha1.SecretStore{}, f.defaultInformer)
 }
 
-func (f *secretSourceInformer) Lister() v1alpha1.SecretSourceLister {
-	return v1alpha1.NewSecretSourceLister(f.Informer().GetIndexer())
+func (f *secretStoreInformer) Lister() v1alpha1.SecretStoreLister {
+	return v1alpha1.NewSecretStoreLister(f.Informer().GetIndexer())
 }

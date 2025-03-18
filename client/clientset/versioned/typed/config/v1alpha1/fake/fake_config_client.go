@@ -33,8 +33,8 @@ func (c *FakeConfigV1alpha1) SecretMetadatas(namespace string) v1alpha1.SecretMe
 	return &FakeSecretMetadatas{c, namespace}
 }
 
-func (c *FakeConfigV1alpha1) SecretSources() v1alpha1.SecretSourceInterface {
-	return &FakeSecretSources{c}
+func (c *FakeConfigV1alpha1) SecretStores() v1alpha1.SecretStoreInterface {
+	return &FakeSecretStores{c}
 }
 
 // RESTClient returns a RESTClient that is used to communicate

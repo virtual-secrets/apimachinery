@@ -26,6 +26,6 @@ type SecretMetadataListerExpansion interface{}
 // SecretMetadataNamespaceLister.
 type SecretMetadataNamespaceListerExpansion interface{}
 
-// SecretSourceListerExpansion allows custom methods to be added to
-// SecretSourceLister.
-type SecretSourceListerExpansion interface{}
+// SecretStoreListerExpansion allows custom methods to be added to
+// SecretStoreLister.
+type SecretStoreListerExpansion interface{}

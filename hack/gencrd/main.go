@@ -66,7 +66,7 @@ func generateSwaggerJson() {
 		//nolint:govet
 		Resources: []openapi.TypeInfo{
 			{configapi.SchemeGroupVersion, configapi.ResourceSecretMetadatas, configapi.ResourceKindSecretMetadata, true},
-			{configapi.SchemeGroupVersion, configapi.ResourceSecretSources, configapi.ResourceKindSecretSource, false},
+			{configapi.SchemeGroupVersion, configapi.ResourceSecretStores, configapi.ResourceKindSecretStore, false},
 
 			{vsapi.SchemeGroupVersion, vsapi.ResourceSecrets, vsapi.ResourceKindSecret, true},
 		},

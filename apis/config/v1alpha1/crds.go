@@ -26,6 +26,6 @@ func (_ SecretMetadata) CustomResourceDefinition() *apiextensions.CustomResource
 	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceSecretMetadatas))
 }
 
-func (_ SecretSource) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
-	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceSecretSources))
+func (_ SecretStore) CustomResourceDefinition() *apiextensions.CustomResourceDefinition {
+	return crds.MustCustomResourceDefinition(SchemeGroupVersion.WithResource(ResourceSecretStores))
 }

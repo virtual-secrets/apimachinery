@@ -26,8 +26,8 @@ import (
 type Interface interface {
 	// SecretMetadatas returns a SecretMetadataInformer.
 	SecretMetadatas() SecretMetadataInformer
-	// SecretSources returns a SecretSourceInformer.
-	SecretSources() SecretSourceInformer
+	// SecretStores returns a SecretStoreInformer.
+	SecretStores() SecretStoreInformer
 }
 
 type version struct {
@@ -46,7 +46,7 @@ func (v *version) SecretMetadatas() SecretMetadataInformer {
 	return &secretMetadataInformer{factory: v.factory, namespace: v.namespace, tweakListOptions: v.tweakListOptions}
 }
 
-// SecretSources returns a SecretSourceInformer.
-func (v *version) SecretSources() SecretSourceInformer {
-	return &secretSourceInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
+// SecretStores returns a SecretStoreInformer.
+func (v *version) SecretStores() SecretStoreInformer {
+	return &secretStoreInformer{factory: v.factory, tweakListOptions: v.tweakListOptions}
 }
