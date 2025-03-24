@@ -43,7 +43,11 @@ type SecretStore struct {
 
 // SecretStoreSpec defines the desired state of SecretStore
 type SecretStoreSpec struct {
+	// +optional
 	Vault *Vault `json:"vault,omitempty"`
+
+	// +optional
+	AWS *AWS `json:"aws,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -62,6 +66,11 @@ type Vault struct {
 	// Name of the vault role to use for the operator
 	// +optional
 	RoleName string `json:"roleName,omitempty"`
+}
+
+type AWS struct {
+	// Connection url to the secret manager
+	URL string `json:"url"`
 }
 
 func init() {

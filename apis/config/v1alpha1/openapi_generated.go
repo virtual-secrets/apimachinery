@@ -36,6 +36,7 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS":                               schema_apimachinery_apis_config_v1alpha1_AWS(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadata":                    schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataList":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataList(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataSpec":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref),
@@ -447,6 +448,27 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	}
 }
 
+func schema_apimachinery_apis_config_v1alpha1_AWS(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"url": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Connection url to the secret manager",
+							Default:     "",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+				Required: []string{"url"},
+			},
+		},
+	}
+}
+
 func schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -673,11 +695,16 @@ func schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref common.Referen
 							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"),
 						},
 					},
+					"aws": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS"),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
+			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
 	}
 }
 
