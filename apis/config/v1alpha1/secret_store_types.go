@@ -18,6 +18,7 @@ package v1alpha1
 
 import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	kmapi "kmodules.xyz/client-go/api/v1"
 )
 
 const (
@@ -43,7 +44,11 @@ type SecretStore struct {
 
 // SecretStoreSpec defines the desired state of SecretStore
 type SecretStoreSpec struct {
+	// +optional
 	Vault *Vault `json:"vault,omitempty"`
+
+	// +optional
+	AWS *AWS `json:"aws,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object
@@ -62,6 +67,21 @@ type Vault struct {
 	// Name of the vault role to use for the operator
 	// +optional
 	RoleName string `json:"roleName,omitempty"`
+}
+
+type AWS struct {
+	// SecretRef defines a secret that contains the
+	// AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+	// +optional
+	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
+
+	// Authenticate against AWS using service account tokens.
+	// which is a credentialless authentication method designed specifically for Amazon EKS clusters
+	// +optional
+	ServiceAccountRef *kmapi.ObjectReference `json:"serviceAccountRef,omitempty"`
+
+	// Region specifies the AWS region where the Secret will be stored
+	Region string `json:"region,omitempty"`
 }
 
 func init() {

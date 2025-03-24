@@ -36,6 +36,7 @@ import (
 
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS":                               schema_apimachinery_apis_config_v1alpha1_AWS(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadata":                    schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataList":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataList(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataSpec":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref),
@@ -447,6 +448,39 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	}
 }
 
+func schema_apimachinery_apis_config_v1alpha1_AWS(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecretRef defines a secret that contains the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY",
+							Ref:         ref("kmodules.xyz/client-go/api/v1.ObjectReference"),
+						},
+					},
+					"serviceAccountRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Authenticate against AWS using service account tokens. which is a credentialless authentication method designed specifically for Amazon EKS clusters",
+							Ref:         ref("kmodules.xyz/client-go/api/v1.ObjectReference"),
+						},
+					},
+					"region": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Region specifies the AWS region where the Secret will be stored",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kmodules.xyz/client-go/api/v1.ObjectReference"},
+	}
+}
+
 func schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -565,6 +599,13 @@ func schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref common.Refe
 							Format:      "",
 						},
 					},
+					"dataLength": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DataLength specifies the count of data stored in the Secret",
+							Type:        []string{"integer"},
+							Format:      "int32",
+						},
+					},
 				},
 				Required: []string{"secretStoreName"},
 			},
@@ -673,11 +714,16 @@ func schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref common.Referen
 							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"),
 						},
 					},
+					"aws": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS"),
+						},
+					},
 				},
 			},
 		},
 		Dependencies: []string{
-			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
+			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
 	}
 }
 
