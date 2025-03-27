@@ -2342,6 +2342,19 @@
     }
   },
   "definitions": {
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.AWS": {
+      "type": "object",
+      "required": [
+        "url"
+      ],
+      "properties": {
+        "url": {
+          "description": "Connection url to the secret manager",
+          "type": "string",
+          "default": ""
+        }
+      }
+    },
     "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretMetadata": {
       "type": "object",
       "properties": {
@@ -2494,6 +2507,9 @@
       "description": "SecretStoreSpec defines the desired state of SecretStore",
       "type": "object",
       "properties": {
+        "aws": {
+          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.AWS"
+        },
         "vault": {
           "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Vault"
         }
