@@ -75,11 +75,6 @@ type AWS struct {
 	// +optional
 	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
 
-	// Authenticate against AWS using service account tokens.
-	// which is a credentialless authentication method designed specifically for Amazon EKS clusters
-	// +optional
-	ServiceAccountRef *kmapi.ObjectReference `json:"serviceAccountRef,omitempty"`
-
 	// Region specifies the AWS region where the Secret will be stored
 	Region string `json:"region,omitempty"`
 }

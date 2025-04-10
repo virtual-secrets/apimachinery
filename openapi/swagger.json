@@ -2352,10 +2352,6 @@
         "secretRef": {
           "description": "SecretRef defines a secret that contains the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY",
           "$ref": "#/definitions/xyz.kmodules.client-go.api.v1.ObjectReference"
-        },
-        "serviceAccountRef": {
-          "description": "Authenticate against AWS using service account tokens. which is a credentialless authentication method designed specifically for Amazon EKS clusters",
-          "$ref": "#/definitions/xyz.kmodules.client-go.api.v1.ObjectReference"
         }
       }
     },

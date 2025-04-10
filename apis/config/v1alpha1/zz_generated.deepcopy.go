@@ -34,11 +34,6 @@ func (in *AWS) DeepCopyInto(out *AWS) {
 		*out = new(v1.ObjectReference)
 		**out = **in
 	}
-	if in.ServiceAccountRef != nil {
-		in, out := &in.ServiceAccountRef, &out.ServiceAccountRef
-		*out = new(v1.ObjectReference)
-		**out = **in
-	}
 	return
 }
 

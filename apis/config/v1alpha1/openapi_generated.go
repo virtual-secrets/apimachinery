@@ -460,12 +460,6 @@ func schema_apimachinery_apis_config_v1alpha1_AWS(ref common.ReferenceCallback) 
 							Ref:         ref("kmodules.xyz/client-go/api/v1.ObjectReference"),
 						},
 					},
-					"serviceAccountRef": {
-						SchemaProps: spec.SchemaProps{
-							Description: "Authenticate against AWS using service account tokens. which is a credentialless authentication method designed specifically for Amazon EKS clusters",
-							Ref:         ref("kmodules.xyz/client-go/api/v1.ObjectReference"),
-						},
-					},
 					"region": {
 						SchemaProps: spec.SchemaProps{
 							Description: "Region specifies the AWS region where the Secret will be stored",
