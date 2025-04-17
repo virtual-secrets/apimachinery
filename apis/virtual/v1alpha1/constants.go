@@ -21,4 +21,7 @@ const (
 	AWSSecretAccessKey = "AWS_SECRET_ACCESS_KEY"
 	AWSSessionToken    = "AWS_SESSION_TOKEN"
 	AWSRegion          = "AWS_REGION"
+
+	AnnotationDataLenKey           = "virtual-secrets.dev/data-len"
+	AnnotationCreationTimestampKey = "virtual-secrets.dev/creation-timestamp"
 )
