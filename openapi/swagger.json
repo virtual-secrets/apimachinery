@@ -2355,6 +2355,9 @@
         }
       }
     },
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Secret": {
+      "type": "object"
+    },
     "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretMetadata": {
       "type": "object",
       "properties": {
@@ -2514,6 +2517,10 @@
       "properties": {
         "aws": {
           "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.AWS"
+        },
+        "secret": {
+          "description": "**For Dev Mode Only** We can use a secret as the Secret Store for testing",
+          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Secret"
         },
         "vault": {
           "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Vault"
