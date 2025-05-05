@@ -2428,8 +2428,12 @@
         "secretStoreName"
       ],
       "properties": {
+        "dataHash": {
+          "description": "DataHash specifies the hash value of the data stored in the Virtual Secret",
+          "type": "string"
+        },
         "dataLength": {
-          "description": "DataLength specifies the count of data stored in the Secret",
+          "description": "DataLength specifies the count of data stored in the Virtual Secret",
           "type": "integer",
           "format": "int32"
         },

@@ -606,9 +606,16 @@ func schema_apimachinery_apis_config_v1alpha1_SecretMetadataSpec(ref common.Refe
 					},
 					"dataLength": {
 						SchemaProps: spec.SchemaProps{
-							Description: "DataLength specifies the count of data stored in the Secret",
+							Description: "DataLength specifies the count of data stored in the Virtual Secret",
 							Type:        []string{"integer"},
 							Format:      "int32",
+						},
+					},
+					"dataHash": {
+						SchemaProps: spec.SchemaProps{
+							Description: "DataHash specifies the hash value of the data stored in the Virtual Secret",
+							Type:        []string{"string"},
+							Format:      "",
 						},
 					},
 				},
