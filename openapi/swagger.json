@@ -2342,6 +2342,22 @@
     }
   },
   "definitions": {
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.AWS": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "description": "Region specifies the AWS region where the Secret will be stored",
+          "type": "string"
+        },
+        "secretRef": {
+          "description": "SecretRef defines a secret that contains the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY",
+          "$ref": "#/definitions/xyz.kmodules.client-go.api.v1.ObjectReference"
+        }
+      }
+    },
+    "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Secret": {
+      "type": "object"
+    },
     "dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.SecretMetadata": {
       "type": "object",
       "properties": {
@@ -2412,6 +2428,15 @@
         "secretStoreName"
       ],
       "properties": {
+        "dataHash": {
+          "description": "DataHash specifies the hash value of the data stored in the Virtual Secret",
+          "type": "string"
+        },
+        "dataLength": {
+          "description": "DataLength specifies the count of data stored in the Virtual Secret",
+          "type": "integer",
+          "format": "int32"
+        },
         "immutable": {
           "description": "Immutable, if set to true, ensures that data stored in the Secret cannot be updated (only object metadata can be modified). If not set to true, the field can be modified at any time. Defaulted to nil.",
           "type": "boolean"
@@ -2494,6 +2519,13 @@
       "description": "SecretStoreSpec defines the desired state of SecretStore",
       "type": "object",
       "properties": {
+        "aws": {
+          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.AWS"
+        },
+        "secret": {
+          "description": "**For Dev Mode Only** We can use a secret as the Secret Store for testing",
+          "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Secret"
+        },
         "vault": {
           "$ref": "#/definitions/dev.virtual-secrets.go.apimachinery.apis.config.v1alpha1.Vault"
         }
@@ -3331,6 +3363,24 @@
         "platform": {
           "type": "string",
           "default": ""
+        }
+      }
+    },
+    "xyz.kmodules.client-go.api.v1.ObjectReference": {
+      "description": "ObjectReference contains enough information to let you inspect or modify the referred object.",
+      "type": "object",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "description": "Name of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#names",
+          "type": "string",
+          "default": ""
+        },
+        "namespace": {
+          "description": "Namespace of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/",
+          "type": "string"
         }
       }
     }
