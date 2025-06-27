@@ -33,6 +33,10 @@ func (c *FakeVirtualSecretsV1alpha1) Secrets(namespace string) v1alpha1.SecretIn
 	return &FakeSecrets{c, namespace}
 }
 
+func (c *FakeVirtualSecretsV1alpha1) SecretMounts(namespace string) v1alpha1.SecretMountInterface {
+	return &FakeSecretMounts{c, namespace}
+}
+
 // RESTClient returns a RESTClient that is used to communicate
 // with API server by this client implementation.
 func (c *FakeVirtualSecretsV1alpha1) RESTClient() rest.Interface {

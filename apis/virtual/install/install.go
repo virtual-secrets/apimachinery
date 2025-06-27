@@ -29,5 +29,7 @@ func Install(scheme *runtime.Scheme) {
 	scheme.AddUnversionedTypes(v1alpha1.InternalGV,
 		&v1alpha1.Secret{},
 		&v1alpha1.SecretList{},
+		&v1alpha1.SecretMount{},
+		&v1alpha1.SecretMountList{},
 	)
 }

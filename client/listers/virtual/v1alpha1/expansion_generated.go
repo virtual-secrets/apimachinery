@@ -25,3 +25,11 @@ type SecretListerExpansion interface{}
 // SecretNamespaceListerExpansion allows custom methods to be added to
 // SecretNamespaceLister.
 type SecretNamespaceListerExpansion interface{}
+
+// SecretMountListerExpansion allows custom methods to be added to
+// SecretMountLister.
+type SecretMountListerExpansion interface{}
+
+// SecretMountNamespaceListerExpansion allows custom methods to be added to
+// SecretMountNamespaceLister.
+type SecretMountNamespaceListerExpansion interface{}
