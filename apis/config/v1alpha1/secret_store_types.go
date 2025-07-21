@@ -44,11 +44,13 @@ type SecretStore struct {
 
 // SecretStoreSpec defines the desired state of SecretStore
 type SecretStoreSpec struct {
-	// +optional
 	Vault *Vault `json:"vault,omitempty"`
 
 	// +optional
 	AWS *AWS `json:"aws,omitempty"`
+
+	// +optional
+	Azure *Azure `json:"azure,omitempty"`
 
 	// **For Dev Mode Only**
 	// We can use a secret as the Secret Store for testing
@@ -82,6 +84,19 @@ type AWS struct {
 
 	// Region specifies the AWS region where the Secret will be stored
 	Region string `json:"region,omitempty"`
+}
+
+type Azure struct {
+	// SecretRef defines a secret that contains the
+	// AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
+
+	// The Azure Key Vault Provider offers four modes for accessing a Key Vault instance
+	// Workload Identity, Pod Identity, Managed Identities, Service Principal
+	// +kubebuilder:validation:Enum=WorkloadIdentity;PodIdentity;ManagedIdentity;ServicePrincipal
+	AccessMode string `json:"accessMode,omitempty"`
+
+	KeyVaultName string `json:"keyVaultName,omitempty"`
 }
 
 type Secret struct {

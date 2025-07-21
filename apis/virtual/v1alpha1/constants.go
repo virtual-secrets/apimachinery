@@ -24,4 +24,8 @@ const (
 
 	AnnotationDataLenKey           = "virtual-secrets.dev/data-len"
 	AnnotationCreationTimestampKey = "virtual-secrets.dev/creation-timestamp"
+
+	AzureTenantID     = "AZURE_TENANT_ID"
+	AzureClientID     = "AZURE_CLIENT_ID"
+	AzureClientSecret = "AZURE_CLIENT_SECRET"
 )
