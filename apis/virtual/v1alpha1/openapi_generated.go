@@ -38,6 +38,10 @@ func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenA
 	return map[string]common.OpenAPIDefinition{
 		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.Secret":                           schema_apimachinery_apis_virtual_v1alpha1_Secret(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretList":                       schema_apimachinery_apis_virtual_v1alpha1_SecretList(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMount":                      schema_apimachinery_apis_virtual_v1alpha1_SecretMount(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountList":                  schema_apimachinery_apis_virtual_v1alpha1_SecretMountList(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountSpec":                  schema_apimachinery_apis_virtual_v1alpha1_SecretMountSpec(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountStaus":                 schema_apimachinery_apis_virtual_v1alpha1_SecretMountStaus(ref),
 		"k8s.io/api/apps/v1.ControllerRevision":                                                      schema_k8sio_api_apps_v1_ControllerRevision(ref),
 		"k8s.io/api/apps/v1.ControllerRevisionList":                                                  schema_k8sio_api_apps_v1_ControllerRevisionList(ref),
 		"k8s.io/api/apps/v1.DaemonSet":                                                               schema_k8sio_api_apps_v1_DaemonSet(ref),
@@ -580,6 +584,145 @@ func schema_apimachinery_apis_virtual_v1alpha1_SecretList(ref common.ReferenceCa
 		},
 		Dependencies: []string{
 			"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.Secret", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_apimachinery_apis_virtual_v1alpha1_SecretMount(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SecretMount holds secret data of a certain type. The total bytes of the values in the Data field must be less than MaxSecretMountSize bytes.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard object's metadata. More meta: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#metadata",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"),
+						},
+					},
+					"spec": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountSpec"),
+						},
+					},
+					"status": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountStaus"),
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountSpec", "go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMountStaus", "k8s.io/apimachinery/pkg/apis/meta/v1.ObjectMeta"},
+	}
+}
+
+func schema_apimachinery_apis_virtual_v1alpha1_SecretMountList(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Description: "SecretMountList is a list of SecretMount.",
+				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"kind": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"apiVersion": {
+						SchemaProps: spec.SchemaProps{
+							Description: "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"metadata": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Standard list metadata. More meta: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
+							Default:     map[string]interface{}{},
+							Ref:         ref("k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"),
+						},
+					},
+					"items": {
+						SchemaProps: spec.SchemaProps{
+							Description: "Items is a list of secret objects. More meta: https://kubernetes.io/docs/concepts/configuration/secret",
+							Type:        []string{"array"},
+							Items: &spec.SchemaOrArray{
+								Schema: &spec.Schema{
+									SchemaProps: spec.SchemaProps{
+										Default: map[string]interface{}{},
+										Ref:     ref("go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMount"),
+									},
+								},
+							},
+						},
+					},
+				},
+				Required: []string{"items"},
+			},
+		},
+		Dependencies: []string{
+			"go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1.SecretMount", "k8s.io/apimachinery/pkg/apis/meta/v1.ListMeta"},
+	}
+}
+
+func schema_apimachinery_apis_virtual_v1alpha1_SecretMountSpec(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
+	}
+}
+
+func schema_apimachinery_apis_virtual_v1alpha1_SecretMountStaus(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"name": {
+						SchemaProps: spec.SchemaProps{
+							Default: "",
+							Type:    []string{"string"},
+							Format:  "",
+						},
+					},
+				},
+				Required: []string{"name"},
+			},
+		},
 	}
 }
 

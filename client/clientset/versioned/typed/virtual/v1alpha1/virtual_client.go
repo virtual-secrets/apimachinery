@@ -30,6 +30,7 @@ import (
 type VirtualSecretsV1alpha1Interface interface {
 	RESTClient() rest.Interface
 	SecretsGetter
+	SecretMountsGetter
 }
 
 // VirtualSecretsV1alpha1Client is used to interact with features provided by the virtual-secrets.dev group.
@@ -39,6 +40,10 @@ type VirtualSecretsV1alpha1Client struct {
 
 func (c *VirtualSecretsV1alpha1Client) Secrets(namespace string) SecretInterface {
 	return newSecrets(c, namespace)
+}
+
+func (c *VirtualSecretsV1alpha1Client) SecretMounts(namespace string) SecretMountInterface {
+	return newSecretMounts(c, namespace)
 }
 
 // NewForConfig creates a new VirtualSecretsV1alpha1Client for the given config.
