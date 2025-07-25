@@ -23,7 +23,6 @@ import (
 
 	v1alpha1 "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1"
 	"go.virtual-secrets.dev/apimachinery/client/clientset/versioned/scheme"
-
 	rest "k8s.io/client-go/rest"
 )
 

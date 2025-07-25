@@ -52,6 +52,9 @@ type SecretStoreSpec struct {
 	// +optional
 	Azure *Azure `json:"azure,omitempty"`
 
+	// +optional
+	GCP *GCP `json:"gcp,omitempty"`
+
 	// **For Dev Mode Only**
 	// We can use a secret as the Secret Store for testing
 	// +optional
@@ -97,6 +100,12 @@ type Azure struct {
 	AccessMode string `json:"accessMode,omitempty"`
 
 	KeyVaultName string `json:"keyVaultName,omitempty"`
+}
+
+type GCP struct {
+	// SecretRef defines a secret that contains the
+	// AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
 }
 
 type Secret struct {

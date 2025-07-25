@@ -28,4 +28,6 @@ const (
 	AzureTenantID     = "AZURE_TENANT_ID"
 	AzureClientID     = "AZURE_CLIENT_ID"
 	AzureClientSecret = "AZURE_CLIENT_SECRET"
+
+	GCPServiceAccountJSONKey = "credentials.json"
 )

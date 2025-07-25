@@ -23,7 +23,6 @@ import (
 
 	v1alpha1 "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1"
 	virtualv1alpha1 "go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1"
-
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

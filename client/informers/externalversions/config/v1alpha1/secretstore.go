@@ -26,7 +26,6 @@ import (
 	versioned "go.virtual-secrets.dev/apimachinery/client/clientset/versioned"
 	internalinterfaces "go.virtual-secrets.dev/apimachinery/client/informers/externalversions/internalinterfaces"
 	v1alpha1 "go.virtual-secrets.dev/apimachinery/client/listers/config/v1alpha1"
-
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"
