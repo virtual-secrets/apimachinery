@@ -103,8 +103,8 @@ type Azure struct {
 }
 
 type GCP struct {
-	// SecretRef defines a secret that contains the
-	// AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+	// SecretRef defines a secret that contains the json file with all data
+	// client_id, client_secret etc
 	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
 }
 

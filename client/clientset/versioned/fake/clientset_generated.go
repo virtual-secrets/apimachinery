@@ -24,6 +24,7 @@ import (
 	fakeconfigv1alpha1 "go.virtual-secrets.dev/apimachinery/client/clientset/versioned/typed/config/v1alpha1/fake"
 	virtualsecretsv1alpha1 "go.virtual-secrets.dev/apimachinery/client/clientset/versioned/typed/virtual/v1alpha1"
 	fakevirtualsecretsv1alpha1 "go.virtual-secrets.dev/apimachinery/client/clientset/versioned/typed/virtual/v1alpha1/fake"
+
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

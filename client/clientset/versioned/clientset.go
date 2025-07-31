@@ -24,6 +24,7 @@ import (
 
 	configv1alpha1 "go.virtual-secrets.dev/apimachinery/client/clientset/versioned/typed/config/v1alpha1"
 	virtualsecretsv1alpha1 "go.virtual-secrets.dev/apimachinery/client/clientset/versioned/typed/virtual/v1alpha1"
+
 	discovery "k8s.io/client-go/discovery"
 	rest "k8s.io/client-go/rest"
 	flowcontrol "k8s.io/client-go/util/flowcontrol"

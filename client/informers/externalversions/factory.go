@@ -27,6 +27,7 @@ import (
 	config "go.virtual-secrets.dev/apimachinery/client/informers/externalversions/config"
 	internalinterfaces "go.virtual-secrets.dev/apimachinery/client/informers/externalversions/internalinterfaces"
 	virtual "go.virtual-secrets.dev/apimachinery/client/informers/externalversions/virtual"
+
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

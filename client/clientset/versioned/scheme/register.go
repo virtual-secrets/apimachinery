@@ -21,6 +21,7 @@ package scheme
 import (
 	configv1alpha1 "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1"
 	virtualsecretsv1alpha1 "go.virtual-secrets.dev/apimachinery/apis/virtual/v1alpha1"
+
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
