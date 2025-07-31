@@ -28,4 +28,7 @@ const (
 	AzureTenantID     = "AZURE_TENANT_ID"
 	AzureClientID     = "AZURE_CLIENT_ID"
 	AzureClientSecret = "AZURE_CLIENT_SECRET"
+
+	AccessModeWorkloadIdentity = "WorkloadIdentity"
+	AccessModeServicePrincipal = "ServicePrincipal"
 )

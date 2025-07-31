@@ -93,7 +93,8 @@ type Azure struct {
 
 	// The Azure Key Vault Provider offers four modes for accessing a Key Vault instance
 	// Workload Identity, Pod Identity, Managed Identities, Service Principal
-	// +kubebuilder:validation:Enum=WorkloadIdentity;PodIdentity;ManagedIdentity;ServicePrincipal
+	// Pod Identity, Managed Identities are not supported yet
+	// +kubebuilder:validation:Enum=WorkloadIdentity;ServicePrincipal
 	AccessMode string `json:"accessMode,omitempty"`
 
 	KeyVaultName string `json:"keyVaultName,omitempty"`

@@ -2359,7 +2359,7 @@
       "type": "object",
       "properties": {
         "accessMode": {
-          "description": "The Azure Key Vault Provider offers four modes for accessing a Key Vault instance Workload Identity, Pod Identity, Managed Identities, Service Principal",
+          "description": "The Azure Key Vault Provider offers four modes for accessing a Key Vault instance Workload Identity, Pod Identity, Managed Identities, Service Principal Pod Identity, Managed Identities are not supported yet",
           "type": "string"
         },
         "keyVaultName": {
