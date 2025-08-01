@@ -37,6 +37,7 @@ import (
 func GetOpenAPIDefinitions(ref common.ReferenceCallback) map[string]common.OpenAPIDefinition {
 	return map[string]common.OpenAPIDefinition{
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS":                               schema_apimachinery_apis_config_v1alpha1_AWS(ref),
+		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Azure":                             schema_apimachinery_apis_config_v1alpha1_Azure(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Secret":                            schema_apimachinery_apis_config_v1alpha1_Secret(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadata":                    schema_apimachinery_apis_config_v1alpha1_SecretMetadata(ref),
 		"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.SecretMetadataList":                schema_apimachinery_apis_config_v1alpha1_SecretMetadataList(ref),
@@ -476,6 +477,39 @@ func schema_apimachinery_apis_config_v1alpha1_AWS(ref common.ReferenceCallback) 
 	}
 }
 
+func schema_apimachinery_apis_config_v1alpha1_Azure(ref common.ReferenceCallback) common.OpenAPIDefinition {
+	return common.OpenAPIDefinition{
+		Schema: spec.Schema{
+			SchemaProps: spec.SchemaProps{
+				Type: []string{"object"},
+				Properties: map[string]spec.Schema{
+					"secretRef": {
+						SchemaProps: spec.SchemaProps{
+							Description: "SecretRef defines a secret that contains the AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY",
+							Ref:         ref("kmodules.xyz/client-go/api/v1.ObjectReference"),
+						},
+					},
+					"accessMode": {
+						SchemaProps: spec.SchemaProps{
+							Description: "The Azure Key Vault Provider offers four modes for accessing a Key Vault instance Workload Identity, Pod Identity, Managed Identities, Service Principal Pod Identity, Managed Identities are not supported yet",
+							Type:        []string{"string"},
+							Format:      "",
+						},
+					},
+					"keyVaultName": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"string"},
+							Format: "",
+						},
+					},
+				},
+			},
+		},
+		Dependencies: []string{
+			"kmodules.xyz/client-go/api/v1.ObjectReference"},
+	}
+}
+
 func schema_apimachinery_apis_config_v1alpha1_Secret(ref common.ReferenceCallback) common.OpenAPIDefinition {
 	return common.OpenAPIDefinition{
 		Schema: spec.Schema{
@@ -731,6 +765,11 @@ func schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref common.Referen
 							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS"),
 						},
 					},
+					"azure": {
+						SchemaProps: spec.SchemaProps{
+							Ref: ref("go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Azure"),
+						},
+					},
 					"secret": {
 						SchemaProps: spec.SchemaProps{
 							Description: "**For Dev Mode Only** We can use a secret as the Secret Store for testing",
@@ -741,7 +780,7 @@ func schema_apimachinery_apis_config_v1alpha1_SecretStoreSpec(ref common.Referen
 			},
 		},
 		Dependencies: []string{
-			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Secret", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
+			"go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.AWS", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Azure", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Secret", "go.virtual-secrets.dev/apimachinery/apis/config/v1alpha1.Vault"},
 	}
 }
 
