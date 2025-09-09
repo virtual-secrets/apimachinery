@@ -492,7 +492,7 @@ func schema_apimachinery_apis_config_v1alpha1_Azure(ref common.ReferenceCallback
 					},
 					"accessMode": {
 						SchemaProps: spec.SchemaProps{
-							Description: "The Azure Key Vault Provider offers four modes for accessing a Key Vault instance Workload Identity, Pod Identity, Managed Identities, Service Principal",
+							Description: "The Azure Key Vault Provider offers four modes for accessing a Key Vault instance Workload Identity, Pod Identity, Managed Identities, Service Principal Pod Identity, Managed Identities are not supported yet",
 							Type:        []string{"string"},
 							Format:      "",
 						},
