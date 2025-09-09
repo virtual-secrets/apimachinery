@@ -31,4 +31,6 @@ const (
 
 	AccessModeWorkloadIdentity = "WorkloadIdentity"
 	AccessModeServicePrincipal = "ServicePrincipal"
+
+	GCPServiceAccountJSONKey = "credentials.json"
 )
