@@ -52,6 +52,9 @@ type SecretStoreSpec struct {
 	// +optional
 	Azure *Azure `json:"azure,omitempty"`
 
+	// +optional
+	GCP *GCP `json:"gcp,omitempty"`
+
 	// **For Dev Mode Only**
 	// We can use a secret as the Secret Store for testing
 	// +optional
@@ -98,6 +101,15 @@ type Azure struct {
 	AccessMode string `json:"accessMode,omitempty"`
 
 	KeyVaultName string `json:"keyVaultName,omitempty"`
+}
+
+type GCP struct {
+	// SecretRef defines a secret that contains the json file with all data
+	// client_id, client_secret etc
+	SecretRef *kmapi.ObjectReference `json:"secretRef,omitempty"`
+
+	// Region specifies the GCP region where the Secret will be stored
+	Region string `json:"region,omitempty"`
 }
 
 type Secret struct {
