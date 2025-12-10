@@ -1,6 +1,6 @@
 module go.virtual-secrets.dev/apimachinery
 
-go 1.25.5
+go 1.24.0
 
 require (
 	github.com/google/gofuzz v1.2.0
