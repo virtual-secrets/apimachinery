@@ -26,7 +26,8 @@ import (
 // Install registers the API group and adds types to a scheme
 func Install(scheme *runtime.Scheme) {
 	utilruntime.Must(v1alpha1.AddToScheme(scheme))
-	scheme.AddUnversionedTypes(v1alpha1.InternalGV,
+	scheme.AddUnversionedTypes(
+		v1alpha1.InternalGV,
 		&v1alpha1.Secret{},
 		&v1alpha1.SecretList{},
 		&v1alpha1.SecretMount{},
