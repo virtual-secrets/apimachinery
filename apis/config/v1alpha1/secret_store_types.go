@@ -71,7 +71,7 @@ type SecretStoreList struct {
 }
 
 type Vault struct {
-	// AppBindingRef refers to the AppBinding (kmodules.xyz/custom-resources) that
+	// Ref refers to the AppBinding (kmodules.xyz/custom-resources) that
 	// describes how to connect to the Vault/OpenBao server: connection URL and CA
 	// bundle. This is the same AppBinding a KubeVault VaultServer publishes for
 	// its consumers.
@@ -83,7 +83,7 @@ type Vault struct {
 	// that Kubernetes namespace), instead of the Vault root namespace. Virtual
 	// Secrets never creates or mounts engines in that namespace itself; it only
 	// reads/writes into namespaces KubeVault has already provisioned.
-	AppBindingRef kmapi.ObjectReference `json:"appBindingRef"`
+	Ref kmapi.ObjectReference `json:"ref"`
 
 	// RoleName is the Vault Kubernetes auth role Virtual Secrets logs in as,
 	// bound to the virtual-secrets-server service account. This is distinct
